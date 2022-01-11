@@ -2,9 +2,9 @@
 <!-- <img src="{{sInfo.headerImgURL}}" alt="" class="d-block img-fluid"> -->
 <!-- Attribute binding -->
 
-<div class="d-grid gap-2">
+<div class="d-grid gap-2" [style.background-color]="(sInfo.isOpen)? 'gray': 'red'">
     <!-- Event Binding -->
-    <button type="button" name="" id="" class="btn btn-primary m-2" (click)="toggleStore()">Toggle Store</button>
+    <button [class.btn-warning]="!sInfo.isOpen" type="button" name="" id="" class="btn btn-primary m-2" (click)="toggleStore()">Toggle Store</button>
 </div>
 
 <!-- Structural Directives -->
@@ -12,10 +12,16 @@
 <!-- Property Binding -->
 <div [hidden]="!sInfo.isOpen">
     <img [src]="sInfo.headerImgURL" alt="" class="d-block img-fluid">
-    <h2>Store Name: {{sInfo.storeName}}</h2>
+    <h2>Store Name: {{sInfo?.storeName}}</h2>
     <h3>Our services:</h3>
     <!-- Structural Directives -->
     <ul>
         <li *ngFor="let item of sInfo.storeServices"> {{item}}</li>
     </ul>
 </div>
+<hr>
+<div class="mb-3">
+    <label for="" class="form-label">Enter Your Feedback</label>
+    <input [(ngModel)]="clientFeedback" type="text" class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
+</div>
+<h3>You entered: {{clientFeedback}}</h3>

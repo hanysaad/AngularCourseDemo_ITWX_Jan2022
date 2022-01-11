@@ -8,6 +8,8 @@ import { StoreInfo } from 'src/app/ViewModels/store-info';
 })
 export class HomeComponent implements OnInit {
   sInfo:StoreInfo;
+  clientFeedback:string="test";
+  // btnClasses="btn btn-primary m-3"
   constructor() {
     this.sInfo=new StoreInfo("ITI Store"
                             , "https://picsum.photos/seed/picsum/500/150"
