@@ -6,15 +6,17 @@
             <th>Name</th>
             <th>Price in USD</th>
             <th>Price in EGP</th>
-            <th>Quantity</th>
-            <th>image</th>
+            <th>Available Quantity</th>
+            <th>Image</th>
+            <th>Items Count</th>
+            <th>Buy</th>
         </tr>
     </thead>
     <tbody>
         <!-- <tr [hidden]="prd.quantity==0" *ngFor="let prd of prdList; let i=index"> -->
         <!-- <tr [style.background-color]="prd.quantity==0? 'lightyellow': 'white'" *ngFor="let prd of prdList; let i=index"> -->
         <!-- <tr [class.bg-warning]="prd.quantity==1" [ngStyle]="{'background-color': prd.quantity==0? 'lightyellow': 'white', 'color':prd.quantity==0? 'red': 'black'}" *ngFor="let prd of prdList; let i=index"> -->
-        <tr [ngClass]="{'bg-warning': prd.quantity==1, 'text-primary': prd.quantity==1}" [ngStyle]="{'background-color': prd.quantity==0? 'lightyellow': 'white', 'color':prd.quantity==0? 'red': 'black'}" *ngFor="let prd of prdList; let i=index">
+        <tr [ngClass]="{'bg-warning': prd.quantity==1, 'text-primary': prd.quantity==1}" [ngStyle]="{'background-color': prd.quantity==0? 'lightyellow': 'white', 'color':prd.quantity==0? 'red': 'black'}" *ngFor="let prd of prdListOfCat; let i=index">
             <!-- <td>{{prd.id}}</td> -->
             <td>{{i+1}}</td>
             <td>{{prd.name}}</td>
@@ -36,9 +38,18 @@
             </td>
             <!-- <td><img LightBox hoverColor="red" [src]="prd.imgURL" alt=""></td> -->
             <!-- <td><img [LightBox]="hoverColor" [src]="prd.imgURL" alt=""></td> -->
-            <td><img LightBox="red" defaultColor="blue" [src]="prd.imgURL" alt=""></td>
-
+            <td><img LightBox="red" defaultColor="yellow" [src]="prd.imgURL" alt=""></td>
+            <td>
+                <!-- Template variable -->
+                <input #itemsCount type="number" class="form-control" name="" id="count">
+            </td>
+            <td><button type="button" class="btn btn-primary" (click)="calcTotalPrice(prd.price,itemsCount.value)">Buy</button></td>
         </tr>
 
     </tbody>
 </table>
+<br>
+<div class="bg-light">
+    <h3>[For Test] To be removed:</h3>
+    <h4>Order total price in Nested: {{orderTotalPrice}}</h4>
+</div>

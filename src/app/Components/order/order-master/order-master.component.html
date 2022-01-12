@@ -1,0 +1,25 @@
+<h3>Create your order</h3>
+<div class="mb-3">
+    <label for="" class="form-label">Client Name:</label>
+    <input #clientNameInput type="text" class="form-control" name="" id="">
+</div>
+
+<div class="mb-3">
+    <label for="catList" class="form-label">Category</label>
+    <select class="form-control" name="cat" id="catList" [(ngModel)]="selectedCatID">
+        <option *ngFor="let cat of catList" [value]="cat.id">{{cat.name}}</option>
+    </select>
+</div>
+<div class="bg-light">
+    <h3>[For Test] To be Removed: {{selectedCatID}}</h3>
+    <button type="button" class="btn btn-primary" (click)="testViewChild()">Test viewchild</button>
+</div>
+<hr>
+
+<div class="bg-secondary" style="border: 3px gray solid">
+    <app-product-list [receivedCatID]="selectedCatID" (totalPriceChanged)="onTotalPriceChanged($event)"></app-product-list>
+</div>
+
+<hr>
+<h3>Order summery</h3>
+<h4>Order Total Price: {{OrderTotalPrice}}</h4>
