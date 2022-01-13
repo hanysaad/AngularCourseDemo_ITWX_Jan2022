@@ -8,6 +8,7 @@
             <th>Price in EGP</th>
             <th>Available Quantity</th>
             <th>Image</th>
+            <th>Details</th>
             <th>Items Count</th>
             <th>Buy</th>
         </tr>
@@ -39,6 +40,10 @@
             <!-- <td><img LightBox hoverColor="red" [src]="prd.imgURL" alt=""></td> -->
             <!-- <td><img [LightBox]="hoverColor" [src]="prd.imgURL" alt=""></td> -->
             <td><img LightBox="red" defaultColor="yellow" [src]="prd.imgURL" alt=""></td>
+            <td>
+                <!-- <button type="button" class="btn btn-primary" (click)="openProductDetails(prd.id)">Details</button> -->
+                <a name="" id="" class="btn btn-primary" [routerLink]="['/Product', prd.id]" role="button">Details</a>
+            </td>
             <td>
                 <!-- Template variable -->
                 <input #itemsCount type="number" class="form-control" name="" id="count">

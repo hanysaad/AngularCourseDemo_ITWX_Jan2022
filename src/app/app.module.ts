@@ -12,6 +12,10 @@ import { ProductListComponent } from './Components/order/product-list/product-li
 import { LightBoxDirective } from './Directives/light-box.directive';
 import { DollarToEGPPipe } from './Pipes/dollar-to-egp.pipe';
 import { OrderMasterComponent } from './Components/order/order-master/order-master.component';
+import { PorductStaticService } from './Services/porduct-static.service';
+import { RouterModule } from '@angular/router';
+import { NotFoundComponent } from './Components/not-found/not-found.component';
+import { ProductDetailsComponent } from './Components/order/product-details/product-details.component';
 
 @NgModule({
   declarations: [
@@ -23,14 +27,19 @@ import { OrderMasterComponent } from './Components/order/order-master/order-mast
     ProductListComponent,
     LightBoxDirective,
     DollarToEGPPipe,
-    OrderMasterComponent
+    OrderMasterComponent,
+    NotFoundComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    //RouterModule.forRoot([]),
     FormsModule
   ],
-  providers: [],
+  providers: [
+    //PorductStaticService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
