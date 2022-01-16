@@ -16,6 +16,7 @@ import { PorductStaticService } from './Services/porduct-static.service';
 import { RouterModule } from '@angular/router';
 import { NotFoundComponent } from './Components/not-found/not-found.component';
 import { ProductDetailsComponent } from './Components/order/product-details/product-details.component';
+import { UserLoginComponent } from './Components/user-login/user-login.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ProductDetailsComponent } from './Components/order/product-details/prod
     DollarToEGPPipe,
     OrderMasterComponent,
     NotFoundComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    UserLoginComponent
   ],
   imports: [
     BrowserModule,

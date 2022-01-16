@@ -18,6 +18,14 @@
                     <a class="nav-link" href="#" routerLink="/Order" routerLinkActive="active">Order</a>
                 </li>
 
+                <li [hidden]="isLogged" class="nav-item">
+                    <a class="nav-link" href="#" routerLink="/Login" routerLinkActive="active">Login</a>
+                </li>
+
+                <li [hidden]="!isLogged" class="nav-item">
+                    <a class="nav-link" href="#" routerLink="/Login" routerLinkActive="active">Logout</a>
+                </li>
+
             </ul>
         </div>
     </div>
