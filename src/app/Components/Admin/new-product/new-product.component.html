@@ -1,0 +1,36 @@
+<!-- <button type="button" class="btn btn-primary" (click)="insertProduct()">Save</button> -->
+<form #prdFrm="ngForm" (ngSubmit)="insertProduct()">
+    <div class="mb-3">
+        <label for="prdName" class="form-label">Name</label>
+        <input #inpPrdName="ngModel" type="text" class="form-control" id="prdName" name="name" [(ngModel)]="newPrd.name" required>
+        <div class="alert alert-warning" [hidden]="inpPrdName.valid || inpPrdName.untouched">Product Name can't be empty</div>
+    </div>
+    <div class="mb-3">
+        <label for="prdPrice" class="form-label">Price</label>
+        <input type="number" class="form-control" id="prdPrice" name="price" [(ngModel)]="newPrd.price" min="1" max="9999" required>
+    </div>
+    <div class="mb-3">
+        <label for="prdQuant" class="form-label">Quantity</label>
+        <input type="number" class="form-control" id="prdQuant" name="quantity" [(ngModel)]="newPrd.quantity" min="0" max="999" required>
+    </div>
+    <div class="mb-3">
+        <label for="catList" class="form-label">Category</label>
+        <select class="form-control" name="cat" id="catList" [(ngModel)]="newPrd.categoryID">
+            <option *ngFor="let cat of catList" [value]="cat.id">{{cat.name}}</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="prdImg" class="form-label">Quantity</label>
+        <input type="file" class="form-control" id="prdImg" name="image" [(ngModel)]="newPrd.imgURL">
+    </div>
+
+    <button [disabled]="!prdFrm.valid" type="submit" class="btn btn-primary">Submit</button>
+</form>
+<hr>
+<div>
+    <h3>[To be removed] For test:</h3>
+    <div>{{newPrd | json}}</div>
+    <div>
+        <!-- {{inpPrdName.className}} -->
+    </div>
+</div>

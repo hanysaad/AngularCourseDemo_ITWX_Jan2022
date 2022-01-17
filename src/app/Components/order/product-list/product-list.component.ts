@@ -2,7 +2,8 @@ import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange
 import { Router } from '@angular/router';
 import { IProduct } from 'src/app/Models/iproduct';
 import { PorductStaticService } from 'src/app/Services/porduct-static.service';
-
+import { ProductsFrmAPIService } from 'src/app/Services/products-frm-api.service';
+import {retry, catchError} from 'rxjs/operators'
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
@@ -20,7 +21,8 @@ export class ProductListComponent implements OnInit, OnChanges {
   @Output() totalPriceChanged: EventEmitter<number>;
 
   //private prdSrv:PorductStaticService;
-  constructor(private prdSrv: PorductStaticService
+  constructor(private prdSrv: ProductsFrmAPIService
+            // ,private prdSrv: PorductStaticService
             , private router: Router) {
     //this.prdSrv=prdSrv;
     this.totalPriceChanged= new EventEmitter<number>();
@@ -36,11 +38,30 @@ export class ProductListComponent implements OnInit, OnChanges {
 
   ngOnChanges(): void {
     //this.getProductsByCatID();
-    this.prdListOfCat=this.prdSrv.getByCatID(this.receivedCatID);
-  }
+    //this.prdListOfCat=this.prdSrv.getByCatID(this.receivedCatID);
+    this.prdSrv.getProductsByCatID(this.receivedCatID)
+    // .pipe(
+    //   retry(3),
+    //   catchError(
+    // )
+    .subscribe((prdList)=>{
+      this.prdListOfCat=prdList;
+    });
+    // .subscribe({
+    //     next: (prdList)=>{
+    //       this.prdListOfCat=prdList;
+    //     }, 
+    //     error: (err)=>{
+    //       console.log(err)
+    //     }
+    //   });
+    }
 
   ngOnInit(): void {
-    this.prdListOfCat=this.prdSrv.getByCatID(this.receivedCatID);
+    //this.prdListOfCat=this.prdSrv.getByCatID(this.receivedCatID);
+    this.prdSrv.getAllProducts().subscribe((prdList)=>{
+      this.prdListOfCat=prdList;
+    })
   }
 
   // private getProductsByCatID(): void

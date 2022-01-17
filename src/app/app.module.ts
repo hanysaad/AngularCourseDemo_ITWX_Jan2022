@@ -8,15 +8,15 @@ import { FooterComponent } from './Components/footer/footer.component';
 import { SidebarComponent } from './Components/sidebar/sidebar.component';
 import { HomeComponent } from './Components/home/home.component';
 import { FormsModule } from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http'
 import { ProductListComponent } from './Components/order/product-list/product-list.component';
 import { LightBoxDirective } from './Directives/light-box.directive';
 import { DollarToEGPPipe } from './Pipes/dollar-to-egp.pipe';
 import { OrderMasterComponent } from './Components/order/order-master/order-master.component';
-import { PorductStaticService } from './Services/porduct-static.service';
-import { RouterModule } from '@angular/router';
 import { NotFoundComponent } from './Components/not-found/not-found.component';
 import { ProductDetailsComponent } from './Components/order/product-details/product-details.component';
 import { UserLoginComponent } from './Components/user-login/user-login.component';
+import { NewProductComponent } from './Components/Admin/new-product/new-product.component';
 
 @NgModule({
   declarations: [
@@ -31,13 +31,15 @@ import { UserLoginComponent } from './Components/user-login/user-login.component
     OrderMasterComponent,
     NotFoundComponent,
     ProductDetailsComponent,
-    UserLoginComponent
+    UserLoginComponent,
+    NewProductComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     //RouterModule.forRoot([]),
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [
     //PorductStaticService
