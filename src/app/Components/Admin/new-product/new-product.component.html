@@ -6,8 +6,11 @@
 <form #prdFrm="ngForm" (ngSubmit)="insertProduct()">
     <div class="mb-3">
         <label for="prdName" class="form-label">Name</label>
-        <input [class.is-invalid]="inpPrdName.invalid" #inpPrdName="ngModel" type="text" class="form-control" id="prdName" name="name" [(ngModel)]="newPrd.name" required>
-        <div class="alert alert-warning" [hidden]="inpPrdName.valid || inpPrdName.untouched">Product Name can't be empty</div>
+        <input [class.is-invalid]="inpPrdName.invalid" [class.is-valid]="inpPrdName.valid" #inpPrdName="ngModel" type="text" class="form-control" id="prdName" name="name" [(ngModel)]="newPrd.name" required minlength="3">
+        <div [hidden]="inpPrdName.valid || inpPrdName.untouched">
+            <div class="alert alert-warning" *ngIf="inpPrdName.errors?.['required']">Product Name can't be empty</div>
+            <div class="alert alert-warning" *ngIf="inpPrdName.errors?.['minlength']">Product Name must be 3 characters at least</div>
+        </div>
     </div>
     <div class="mb-3">
         <label for="prdPrice" class="form-label">Price</label>

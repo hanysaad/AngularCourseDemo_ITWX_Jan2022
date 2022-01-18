@@ -7,22 +7,23 @@ import { UserAuthService } from 'src/app/Services/user-auth.service';
   styleUrls: ['./user-login.component.css']
 })
 export class UserLoginComponent implements OnInit {
-  isLogged=false;
+  isLogged:boolean=false;
   constructor(private usrAuth: UserAuthService) { }
 
   ngOnInit(): void {
+    this.isLogged=this.usrAuth.isLogged;
   }
 
   login()
   {
     this.usrAuth.login("Username","password");
-    this.isLogged=true;
+    this.isLogged=this.usrAuth.isLogged;
   }
 
   logout()
   {
     this.usrAuth.logOut();
-    this.isLogged=false;
+    this.isLogged=this.usrAuth.isLogged;
   }
 
 }

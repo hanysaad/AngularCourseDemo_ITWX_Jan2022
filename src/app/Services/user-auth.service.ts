@@ -38,4 +38,9 @@ export class UserAuthService {
     return this.isloggedSubject.asObservable();
   }
 
+  get isLogged()
+  {
+    return localStorage.getItem('Toekn')? true: false;
+  }
+
 }
